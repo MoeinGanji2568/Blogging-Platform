@@ -10,7 +10,6 @@
   :root {
     &,
     &.light-mode {
-      --background-app-rgb: 249, 250, 251;
       --color-primary-900: 74, 109, 255;
       --color-primary-800: 92, 124, 255;
       --color-primary-700: 110, 138, 255;
@@ -37,6 +36,7 @@
       --color-error: 255, 71, 87;
       --color-red-500: 239, 68, 68;
       --color-red-300: 252, 165, 165;
+      --background-app-rgb: 249, 249, 251;
     }
     &.dark-mode {
       --background-app-rgb: 20, 20, 20;
