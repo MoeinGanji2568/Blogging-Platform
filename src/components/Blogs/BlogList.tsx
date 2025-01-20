@@ -1,5 +1,6 @@
 import usePost from "../../hooks/usePost";
 import { PostTypes } from "../../types/blogPost/post.type";
+import { CourseItemSkeleton } from "../Common/BlogItemSkeleton";
 import BlogCard from "./BlogCard";
 
 const BlogList = () => {
@@ -8,7 +9,12 @@ const BlogList = () => {
   return (
     <section className="holder grid grid-cols-12 p-1">
       {isLoading ? (
-        <p>loading...</p>
+        <div className="col-span-12">
+          <CourseItemSkeleton />
+          <CourseItemSkeleton />
+          <CourseItemSkeleton />
+          <CourseItemSkeleton />
+        </div>
       ) : (
         posts.map((item: PostTypes) => <BlogCard posts={item} />)
       )}
