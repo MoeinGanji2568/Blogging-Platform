@@ -4,7 +4,7 @@ function Avatar({
   width = 24,
   height = 24,
 }: {
-  src: string | null;
+  src: string | undefined;
   width?: number;
   height?: number;
 }) {
