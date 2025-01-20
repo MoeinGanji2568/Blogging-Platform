@@ -12,6 +12,7 @@ interface Props {
 const BlogCard: React.FC<Props> = ({ posts }) => {
   return (
     <div
+      key={posts?._id}
       className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-4 border border-secondary-100
       p-2 rounded-lg
       "
