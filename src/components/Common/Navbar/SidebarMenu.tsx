@@ -15,10 +15,15 @@ const LinksItem = [
     children: " درباره ما",
     path: "/about",
   },
+  {
+    id: 4,
+    children: " ثبت نام",
+    path: "/auth/sign-up",
+  },
 ];
-const NavLinks = () => {
+const SidebarMenu = () => {
   return (
-    <ul className="md:flex hidden gap-4">
+    <ul className="flex flex-col gap-4 h-screen">
       {LinksItem.map((link) => {
         return (
           <li key={link.id}>
@@ -37,4 +42,4 @@ const NavLinks = () => {
   );
 };
 
-export default NavLinks;
+export default SidebarMenu;
