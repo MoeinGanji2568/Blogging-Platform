@@ -6,9 +6,9 @@ export interface CategoryType {
 
 export interface AuthorType {
   _id: string;
-  name: string;
-  avatar: string | null;
-  avatarUrl: string | null;
+  name: string | undefined;
+  avatar: string | null | undefined;
+  avatarUrl: string | null | undefined;
 }
 
 export interface CommentType {
