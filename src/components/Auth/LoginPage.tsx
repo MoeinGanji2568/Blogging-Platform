@@ -3,13 +3,15 @@ import RHFTextField from "../ui/RHFTextField";
 import { SpinnerMini } from "../ui/Spinner";
 import Button from "../Common/Button";
 import { Link } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
 
 interface LoginFormInputs {
-  username: string;
+  email: string;
   password: string;
 }
 
 function LoginPage() {
+  const loginUser = useLogin();
   const {
     register,
     handleSubmit,
@@ -17,6 +19,9 @@ function LoginPage() {
   } = useForm<LoginFormInputs>();
   const onSubmit: SubmitHandler<LoginFormInputs> = async (values) => {
     console.log(values);
+    try {
+      loginUser.mutate(values);
+    } catch (error) {}
   };
   //   try {
   //     const res = await signInApi(values);
@@ -39,7 +44,7 @@ function LoginPage() {
       <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
         <RHFTextField
           label="نام کاربری"
-          name="username"
+          name="email"
           errors={errors}
           register={register}
           type="text"
