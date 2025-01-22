@@ -3,6 +3,7 @@ import AuthLayout from "../../components/Layout/AuthLayout";
 import MainLayout from "../../components/Layout/MainLayout";
 import Register from "../../screens/Register";
 import { commonRoute } from "./common.router";
+import Login from "../../screens/Login";
 
 export const publicRoutes = createBrowserRouter([
   ...commonRoute,
@@ -14,7 +15,7 @@ export const publicRoutes = createBrowserRouter([
         element: <AuthLayout />,
         children: [
           { path: "/auth/sign-up", element: <Register /> },
-          // { path: "/auth/sign-in", element: <Login /> },
+          { path: "/auth/sign-in", element: <Login /> },
         ],
       },
     ],
