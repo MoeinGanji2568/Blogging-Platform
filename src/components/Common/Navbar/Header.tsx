@@ -5,8 +5,10 @@ import ButtonIcon from "../../ui/ButtonIcon";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
+import { useAuth } from "../../../contexts/auth/auth.provider";
 
 const Header = () => {
+  const { isAuthenticated } = useAuth();
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
   return (
     <div className="holder p-2 h-[50px] flex items-center justify-between">
@@ -20,9 +22,15 @@ const Header = () => {
         >
           {isOpenDrawer ? <XMarkIcon /> : <Bars3Icon />}
         </ButtonIcon>
-        <Link to={"/auth/sign-up"} className="hidden md:block">
-          ثبت نام
-        </Link>
+        {isAuthenticated ? (
+          <Link to={"/panel/dashboard"} className="hidden md:block">
+            پروفایل
+          </Link>
+        ) : (
+          <Link to={"/auth/sign-up"} className="hidden md:block">
+            ثبت نام
+          </Link>
+        )}
       </div>
       <Drawer open={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
         <SidebarMenu />

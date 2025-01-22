@@ -10,7 +10,6 @@ import { Spinner } from "../components/ui/Spinner";
 function App() {
   const queryClient = new QueryClient();
   const { isAuthenticated } = useAuth();
-  console.log(isAuthenticated);
 
   if (isAuthenticated === null) return <Spinner />;
 
