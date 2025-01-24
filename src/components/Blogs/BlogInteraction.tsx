@@ -13,6 +13,7 @@ import { PostTypes } from "../../types/blogPost/post.type";
 import { useLikePost } from "../../hooks/useLikePost";
 import { useAuth } from "../../contexts/auth/auth.provider";
 import toast from "react-hot-toast";
+import { useBookmarkPost } from "../../hooks/useBookmarkPost";
 
 const BlogInteraction: React.FC<Partial<PostTypes>> = ({
   commentsCount,
@@ -23,11 +24,22 @@ const BlogInteraction: React.FC<Partial<PostTypes>> = ({
 }) => {
   const { isAuthenticated } = useAuth();
   const likePost = useLikePost();
+  const bookmarkPost = useBookmarkPost();
 
   const handleLikePost = (postId: string) => {
     if (isAuthenticated)
       try {
         likePost.mutate(postId);
+      } catch (error) {
+        console.log(error);
+      }
+    else toast.error("لطفا ابتدا ورود کنید ...");
+  };
+
+  const handleBookmarkPost = (postId: string) => {
+    if (isAuthenticated)
+      try {
+        bookmarkPost.mutate(postId);
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +56,7 @@ const BlogInteraction: React.FC<Partial<PostTypes>> = ({
         {isLiked ? <SolidHearIcon /> : <HeartIcon />}
         <span>{toPersianDigits(likesCount || 0)}</span>
       </ButtonIcon>
-      <ButtonIcon variant="primary">
+      <ButtonIcon variant="primary" onClick={() => handleBookmarkPost(_id!)}>
         {isBookmarked ? <SolideBookmarkIcon /> : <BookmarkIcon />}
       </ButtonIcon>
     </div>
