@@ -14,3 +14,7 @@ export async function signInApi(data: { email: string; password: string }) {
 export async function verifyApi() {
   return http.get(`/user/profile`).then(({ data }) => data);
 }
+
+export function logoutApi() {
+  return http.post(`/user/logout`);
+}
